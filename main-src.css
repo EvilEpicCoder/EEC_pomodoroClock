@@ -1,1 +1,11 @@
-/*main-src.css*/
+/*main-src.css Pomodoro Clock*/
+h1{
+  text-align: center;
+  font-size: 60px;
+  font-family: 'Arial', cursive;
+}
+h2{
+  text-align: center;
+  font-size: 30px;
+  font-family: 'Arial', cursive;
+}
