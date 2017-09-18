@@ -1,16 +1,17 @@
 /*main-src.css Pomodoro Clock*/
 body{
  background: #666;
+
 }
 h1{
   text-align: center;
   font-size: 60px;
-  font-family: 'Arial', cursive;
+  font-family: 'Crushed', cursive;
 }
 h2{
   text-align: center;
   font-size: 30px;
-  font-family: 'Arial', cursive;
+  font-family: 'Crushed', cursive;
 }
 .container{
   text-align: center;
@@ -38,7 +39,7 @@ h2{
   padding:5px;
   text-align: center;
   vertical-align:middle;
-  color: blue;
+  color: #222;
 }
 ul>li{
   cursor:not-allowed;
@@ -108,7 +109,7 @@ h5 {
   display: inline-block;
   float: left;
   background-image:url("data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8HxhYDwAGGgIiOQpIlwAAAABJRU5ErkJggg==");
-  background-size: 500px 60px;
+  background-size: 500px 45px;
   background-repeat: no-repeat;
   background-position: 0% 0%;
   -webkit-text-fill-color: transparent;
@@ -125,7 +126,7 @@ h5 {
   background: white; /* For browsers that do not support gradients */
 
   background-image:url("data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8HxhYDwAGGgIiOQpIlwAAAABJRU5ErkJggg==");
-  background-size: 300px 119px;
+  background-size: 300px 133px;
   background-repeat: no-repeat;
   background-position: 0% 100%;
 }
