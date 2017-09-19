@@ -24,6 +24,7 @@ $(document).ready(function(){
     $("h3").text("break");
     $("h4").text(converTTRO(sBreak));
     $("h5").text(converTTRO(sBreak));
+    $("#click")[0].play();
   });
   $("ul:eq(0)>li:eq(2)").click(function(){
     parseInt(sBreak);
@@ -33,6 +34,7 @@ $(document).ready(function(){
     $("h3").text("break");
     $("h4").text(converTTRO(sBreak));
     $("h5").text(converTTRO(sBreak));
+    $("#click")[0].play();
   });
   $("ul:eq(1)>li:eq(0)").click(function(){
     parseInt(sSession);
@@ -42,6 +44,7 @@ $(document).ready(function(){
       $("h3").text("session");
       $("h4").text(converTTRO(sSession));
       $("h5").text(converTTRO(sSession));
+      $("#click")[0].play();
   });
   $("ul:eq(1)>li:eq(2)").click(function(){
     parseInt(sSession);
@@ -51,6 +54,7 @@ $(document).ready(function(){
       $("h3").text("session");
       $("h4").text(converTTRO(sSession));
       $("h5").text(converTTRO(sSession));
+      $("#click")[0].play();
 
   });
 
@@ -59,10 +63,10 @@ function qTimer(){
   $("h3").text("running");
   if(isBreak==false){
     baseTimeArr=converTTRO(sSession,"array");
-    changeBackground(150,54,54);//red
+    changeBackground(150,54,54,"red");//red
   }else{
     baseTimeArr=converTTRO(sBreak,"array");
-    changeBackground(54,150,54);//green
+    changeBackground(54,150,54,"green");//green
   }
   statusBarSegment=0;
   statusTextSegment=178;
@@ -198,6 +202,7 @@ function pomodoToggleRun(){
 
   if(pomodoRun===false){
     pomodoRun=true;
+    $("#run")[0].play();
     qTimer();
     tempTimeArr=getCurrentTime();
     tempTimeArr[0]=tempTimeArr[0]+baseTimeArr[0];
@@ -221,8 +226,10 @@ function pomodoToggleRun(){
         clearInterval(globalTimer);
         if(isBreak==false){
           isBreak=true;
+          $("#alert")[0].play();
         }else{
           isBreak=false;
+          $("#alert")[0].play();
         }
         $("h3").text("click to run");
         pomodoRun=false;
@@ -235,8 +242,9 @@ function pomodoToggleRun(){
 
     //vasyaRunFunc();
   }else{
+    $("#run")[0].play();
     $("h3").text("stopped");
-    changeBackground(54,54,150);//blue
+    changeBackground(54,54,150,"blue");//blue
     clearInterval(globalTimer);
     //globalTimer=0;
     pomodoRun=false;
@@ -244,10 +252,23 @@ function pomodoToggleRun(){
 
   }
 }
-function changeBackground(r,g,b){
+function changeBackground(r,g,b,text){
 $(".display-block").css("-webkit-box-shadow", "inset -59px -52px 35px 94px rgba("+r+","+g+","+b+",0.65)");
 $(".display-block").css("-moz-box-shadow", "inset -59px -52px 35px 94px rgba("+r+","+g+","+b+",0.65)");
 $(".display-block").css("box-shadow", "inset -59px -52px 35px 94px rgba("+r+","+g+","+b+",0.65)");
+  if(text=="red"){
+    $(".display-block").css("background-image", 'url("data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8HxhYDwAGGgIiOQpIlwAAAABJRU5ErkJggg==")');
+    $(".time").css("background-image", 'url("data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8HxhYDwAGGgIiOQpIlwAAAABJRU5ErkJggg==")');
+  }
+  ///---------------------chanhe
+  if(text=="green"){
+    $(".display-block").css("background-image", 'url("data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+s9QDwADjgGClN9leQAAAABJRU5ErkJggg==")');
+    $(".time").css("background-image", 'url("data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+s9QDwADjgGClN9leQAAAABJRU5ErkJggg==")');
+  }
+  if(text=="blue"){
+    $(".display-block").css("background-image", 'url("data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkkPtfDwAC4QGeRWv0GgAAAABJRU5ErkJggg==")');
+    $(".time").css("background-image", 'url("data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkkPtfDwAC4QGeRWv0GgAAAABJRU5ErkJggg==")');
+  }
 }
 function backStatus(currNum,baseNum){
   var minNum=0;
