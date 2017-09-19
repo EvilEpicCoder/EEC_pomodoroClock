@@ -1,6 +1,10 @@
 /*main-src.css Pomodoro Clock*/
 body{
  background: #666;
+-moz-user-select: none;
+-khtml-user-select: none;
+-webkit-user-select: none;
+user-select: none;
 
 }
 h1{
@@ -109,7 +113,7 @@ h5 {
   display: inline-block;
   float: left;
   background-image:url("data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8HxhYDwAGGgIiOQpIlwAAAABJRU5ErkJggg==");
-  background-size: 500px 45px;
+  background-size: 500px 0px;
   background-repeat: no-repeat;
   background-position: 0% 0%;
   -webkit-text-fill-color: transparent;
@@ -117,6 +121,7 @@ h5 {
   display:block;
 }
 .display-block{
+  cursor: pointer;
   margin: 0 auto;
   /*border: 1px solid black;
   border-block-end-color: black;*/
@@ -126,7 +131,7 @@ h5 {
   background: white; /* For browsers that do not support gradients */
 
   background-image:url("data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8HxhYDwAGGgIiOQpIlwAAAABJRU5ErkJggg==");
-  background-size: 300px 133px;
+  background-size: 300px 0px;
   background-repeat: no-repeat;
   background-position: 0% 100%;
 }

@@ -2,10 +2,12 @@
 var sSession=1500;
 var sBreak=300;
 var pomodoRun=false;
-var baseTimeArr=[0,25,00];
+var baseTimeArr=[0,25,0];
 var tempTimeArr=[];
 var globalTimer=0;
 var isBreak=false;
+var statusBarSegment=0;
+var statusTextSegment=178;
 $(document).ready(function(){
   buildInterface();
   $(".display-num:eq(0)").text(converCuttedTTRO(sBreak));
@@ -57,9 +59,13 @@ function qTimer(){
   $("h3").text("running");
   if(isBreak==false){
     baseTimeArr=converTTRO(sSession,"array");
+    changeBackground(150,54,54);//red
   }else{
     baseTimeArr=converTTRO(sBreak,"array");
+    changeBackground(54,150,54);//green
   }
+  statusBarSegment=0;
+  statusTextSegment=178;
 }
 function baseTimeDiff(arrNow,arrFut){
   var hours=arrNow[0]-arrFut[0];
@@ -97,12 +103,14 @@ function buildInterface(){
 //var baseTimeArr=[1,30,30];
 //var baseSeconds=0;
 function converTTS(time) {
-  //var dd=typeof(time);
-  //console.log(dd);
+  var dd=typeof(time);
+  console.log(dd);
   var totalSeconds=0;
+
     totalSeconds+=time[0]*3600;
     totalSeconds+=time[1]*60;
     totalSeconds+=time[2];
+
     console.log(totalSeconds+"totalSeconds");
     return totalSeconds;
 }
@@ -195,17 +203,20 @@ function pomodoToggleRun(){
     tempTimeArr[0]=tempTimeArr[0]+baseTimeArr[0];
     tempTimeArr[1]=tempTimeArr[1]+baseTimeArr[1];
     tempTimeArr[2]=tempTimeArr[2]+baseTimeArr[2];
+    //changeBackground(150,54,54);//red
 
     globalTimer=setInterval(function(){
 
       //var difference= baseTimeDiff(getCurrentTime(),tempTimeArr);
-      var a=converTTS(tempTimeArr);//convert now+25min time to seconds
-      //var b=converTTS(baseTimeArr);//convert 25 min to seconds
+      var a=converTTS(tempTimeArr);
+      console.log(tempTimeArr+"SEG");//convert now+25min time to seconds
+      var b=converTTS(baseTimeArr);//convert 25 min to seconds
       var c=converTTS(getCurrentTime());//conv current time
       var difference=a-c;
-      ///var answer=converTTRO(difference);
+      //var answer=converTTRO(difference);
       $("h4").text(converTTRO(difference));
       $("h5").text(converTTRO(difference));
+      backStatus(difference,b);
       if(difference==0){
         clearInterval(globalTimer);
         if(isBreak==false){
@@ -215,20 +226,41 @@ function pomodoToggleRun(){
         }
         $("h3").text("click to run");
         pomodoRun=false;
+
       }
       console.log(difference);
 
 
-    }, 400);
+    }, 500);
 
     //vasyaRunFunc();
   }else{
+    $("h3").text("stopped");
+    changeBackground(54,54,150);//blue
     clearInterval(globalTimer);
     //globalTimer=0;
     pomodoRun=false;
     //begiLolaBegi();
+
   }
 }
-function smallAlert(){
+function changeBackground(r,g,b){
+$(".display-block").css("-webkit-box-shadow", "inset -59px -52px 35px 94px rgba("+r+","+g+","+b+",0.65)");
+$(".display-block").css("-moz-box-shadow", "inset -59px -52px 35px 94px rgba("+r+","+g+","+b+",0.65)");
+$(".display-block").css("box-shadow", "inset -59px -52px 35px 94px rgba("+r+","+g+","+b+",0.65)");
+}
+function backStatus(currNum,baseNum){
+  var minNum=0;
+  console.log(baseTimeArr+"SEG");
+  //var maxNum=convertTTS(baseTimeArr);
+  var pixelSize=150/baseNum;
+  statusBarSegment=statusBarSegment+pixelSize;
+  statusTextSegment=statusTextSegment-pixelSize;
+  console.log(statusBarSegment+"SEG");
+  $(".display-block").css("background-size"," 300px "+statusBarSegment+"px");//margin 0-300
+  //if(statusBarSegment>124){
+    $(".time").css("background-size"," 500px "+statusTextSegment+"px");
+  //}
+  //margin
 
 }
