@@ -7,7 +7,7 @@
  * Project created for freeCodeCamp, this is "Pomodoro Clock", a timer, for work and rest separation.
  * It created as a challenge, and it has cool interface,total size without any optimization is 15kb, All interface in CSS file.
  * Small story telling : I would like in my project sphere progress bar with special text effect, like fill with color, pushing the color.
- ![Pomodoro Clock](https://github.com/EvilEpicCoder/EEC_pomodoroClock/Screenshot.jpg)
+ ![Pomodoro Clock](https://github.com/EvilEpicCoder/EEC_pomodoroClock/blob/master/Screenshot.jpg)
 ### 2. What I use in this project
 
  * Frameworks : jQuery only
